@@ -1,0 +1,12 @@
+<h1>{{title}} {% now "H:i:s" %}</h1>
+<div class="list-group">
+
+    <a href="/news/" class="list-group-item list-group-item-action " aria-current="true">
+        Все новости
+    </a>
+    {%for item in categories %}
+    <a href="{% url 'category' item.pk %}" class="list-group-item list-group-item-action " aria-current="true">
+        {{item.title}}
+    </a>
+    {%endfor%}
+</div>

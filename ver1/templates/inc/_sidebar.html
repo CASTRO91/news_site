@@ -1,0 +1,21 @@
+{% load news_tags %}
+
+<h1>{{title}} {% now "H:i:s" %}</h1>
+<div class="list-group">
+
+    <a href="/news/" class="list-group-item list-group-item-action " aria-current="true">
+        Все новости
+    </a>
+    {% get_categories as categories%}
+    {%for item in categories %}
+    <a href="{{ item.get_absolute_url }}" class="list-group-item list-group-item-action " aria-current="true">
+        {{item.title}}
+    </a>
+    {%endfor%}
+
+</div>
+
+<br>
+{% comment %}
+{% show_categories %}
+{% endcomment %}
