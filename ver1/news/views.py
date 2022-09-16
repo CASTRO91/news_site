@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.http import HttpResponse
 from .models import News, Category
 from .forms import NewsForm
-
+from django.db.models import F
 
 class HomeNews(ListView):
     model = News
@@ -41,8 +41,13 @@ class ViewNews(DetailView):
     model = News
     template_name = 'news/view_news_list.html'
     context_object_name = 'news_item'
-    # pk_url_kwarg = 'news_id'
 
+    # pk_url_kwarg = 'news_id'
+    def get_queryset(self):
+        news_1 = News.objects.get(pk=self.kwargs['pk'])
+        news_1.views = F('views') + 1
+        news_1.save()
+        return News.objects.filter(pk=self.kwargs['pk'])
 
 
 class CreateNews(CreateView):

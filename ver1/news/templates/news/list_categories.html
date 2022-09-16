@@ -6,7 +6,7 @@
     </a>
     {%for item in categories %}
     <a href="{% url 'category' item.pk %}" class="list-group-item list-group-item-action " aria-current="true">
-        {{item.title}}
+        {{item.title}}{{item.count_category}}
     </a>
     {%endfor%}
 </div>

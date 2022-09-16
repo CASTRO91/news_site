@@ -24,13 +24,15 @@
         </div>
         <div class="media-body">
             <h5 class="card-title">{{item.title}}</h5>
-            <p class="card-text">{{item.content|slice:":400"}}...</p>
-            <a href="{{item.get_absolute_url}}" class="btn btn-primary">Go somewhere</a>
+            <p class="card-text">{{item.content|slice:":400"}}<a href="{{item.get_absolute_url}}" title="Посмотреть новость">...</a></p>
+            <a href="{{item.get_absolute_url}}" class="btn btn-primary">Посмотреть новость</a>
 
         </div>
     </div>
-    <div class="card-footer text-muted">
-        {{item.created_at|date:'Y-m-d H:m'}} <a href="{{item.category.get_absolute_url}}">{{item.category}}</a>
+    <div class="card-footer text-muted" >
+        <p style="float: left;">{{item.created_at|date:'Y-m-d H:m'}} <a href="{{item.category.get_absolute_url}}">{{item.category}}</a></p>
+        <p style="float: right;">Просмотры: {{item.views}}</p>
+
     </div>
 </div>
 {%endfor%}

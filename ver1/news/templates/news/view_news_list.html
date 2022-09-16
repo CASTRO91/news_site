@@ -27,7 +27,8 @@
         </div>
     </div>
     <div class="card-footer text-muted">
-        {{news_item.created_at|date:'Y-m-d H:m'}} <a href="{{news_item.category.get_absolute_url}}">{{news_item.category}}</a>
+        <p style="float: left;">{{news_item.created_at|date:'Y-m-d H:m'}} <a href="{{news_item.category.get_absolute_url}}">{{news_item.category}}</a></p>
+        <p style="float: right;">Просмотры: {{news_item.views}}</p>
     </div>
 </div>
 

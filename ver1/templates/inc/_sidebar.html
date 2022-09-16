@@ -2,14 +2,17 @@
 
 <h1>{{title}} {% now "H:i:s" %}</h1>
 <div class="list-group">
-
-    <a href="/news/" class="list-group-item list-group-item-action " aria-current="true">
-        Все новости
-    </a>
     {% get_categories as categories%}
-    {%for item in categories %}
+    <a href="/news/" class="list-group-item list-group-item-action " aria-current="true">
+
+        <p style="float: left;"> Все новости</p>
+        <p style="float: right;"><span class="badge bg-primary rounded-pill">{{categories.count_all.sum}}</span></p>
+    </a>
+
+    {%for item in categories.category%}
     <a href="{{ item.get_absolute_url }}" class="list-group-item list-group-item-action " aria-current="true">
-        {{item.title}}
+        <p style="float: left;">{{item.title}}</p>
+        <p style="float: right;"><span class="badge bg-primary rounded-pill">{{item.count_category}}</span></p>
     </a>
     {%endfor%}
 
